@@ -1,0 +1,392 @@
+* {
+    background-color: #2D2D2D;
+    color: aliceblue;
+    border-color: #737373;
+    border-width: 0.5px;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-family: 'Jacquard 24', sans-serif;
+    /* display: flex; */
+}
+
+*:active {
+    color:white
+}
+
+body {
+    margin-top: calc(32px + 2rem); /* Automatyczne uwzględnienie paddingu + rozmiar fontu */
+    display: grid;
+    grid-template-columns: 30% 50% 20%; /* Three columns of equal width */
+}
+
+header {
+    /* border-bottom-style: solid; */
+    background-color: #2A2A2A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    position: fixed; /* Pasek jest przyklejony do góry */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Zapewnia, że nagłówek będzie nad innymi elementami */
+    box-shadow: 2px 3px 10px 12px rgba(0, 0, 0, 0.1); 
+    height: auto;
+}
+
+.headerTitle {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    margin-right: 40px  ;
+}
+
+header ul li {
+    margin-right: 30px;
+}
+
+.leftColumn  {
+    border-right-style: solid;
+    height: 100vh;
+}
+
+.profileBrief {
+    display: flex;
+}
+
+.leftColumn .profileBrief {
+    padding: 30px;
+}
+
+.postForm {
+    display: flex;
+    flex-direction: column; /* Align elements vertically */
+    justify-content: center;
+    align-items: center; /* Center elements horizontally */
+    width: 100%; /* Full width for the form */
+    /* height: 50vh; */
+    /* padding: 20px; */
+}
+
+.postForm label {
+    padding-left: 50px;
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-size: 0.9rem;
+    margin-bottom: 10px; /* Space between label and input field */
+}
+
+.postForm textarea {
+    width: 80%; /* Responsive width */
+    height: 10rem; /* Takes up 50% of the parent widget's height */
+    padding: 10px; 
+    line-height: 1; 
+    border: 2px solid #6c6c6c;
+    border-radius: 10px; /* Beveled edges */
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    font-size: 0.8rem; /* Font size */
+    box-sizing: border-box; /* Includes padding and borders in width/height */
+    text-align: left; /* Ensures text starts at the left */
+    resize: none; /* Prevents resizing */
+    overflow: visible;
+}
+
+.postForm button {
+    /* display: flex;   */
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center; /* Center icon inside the button */
+    width: 70px; /* Circle with diameter 40px (20px radius) */
+    height: 70px;
+    border: none;
+    background-color: #6c6c6c;
+    color: white;
+    border-radius: 50%; /* Makes the button a circle */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); Add some shadow */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: white; /* Darker blue on hover */
+}
+
+.postForm i {
+    font-size: 30px;
+    background-color: transparent;
+}
+
+.middleColumn {
+    box-shadow: inset 10px 0 10px rgba(0, 0, 0, 0.1), /* Right side */
+                inset -10px 0 10px rgba(0, 0, 0, 0.1); /* Left side */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.middleColumn .profileBrief{
+    margin: 20px;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
+.otherPost {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reply {
+    padding: 0px;
+    margin-top: 10px;
+    border-width: 2px;
+    border-style: solid;
+    width: 97%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.theOneRepliedTo {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); 
+    background-color: #393939;
+    margin-bottom: 10px;
+    width: 92%;
+    align-self: center;
+    border-style: solid;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.theOneRepliedTo * {
+    background-color: #393939;
+
+}
+
+.theOneRepliedTo .profileBrief {
+    margin-top: 20px;
+}
+
+.theThought {
+    margin: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.theOneRepliedTo .theThought {
+    margin: 10px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    width: 45%;
+    font-size: 0.9rem;
+    overflow: hidden; /* Prevents content from overflowing outside the box */
+    display: -webkit-box; /* Required for limiting the number of lines */
+    -webkit-line-clamp: 2; /* Limits the text to 2 lines */
+    -webkit-box-orient: vertical; /* Required for -webkit-line-clamp to work */
+    text-overflow: ellipsis; /* Adds ellipsis when the text overflows */
+    white-space: normal; /* Allows text to wrap within the defined lines */
+    line-height: 1.2rem; /* Control line spacing (optional) */
+}
+
+.otherPost .simple {
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); 
+
+    margin-top: 10px;
+    border-width: 2px;
+    border-style: solid;
+    width: 97%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.postHeader {
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: solid;
+}
+
+.profileBrief img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Circular image */
+    margin-right: 10px;
+}
+
+.userName {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.userDesc {
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 0.9rem;
+    color: #777;
+    max-width: 300px;
+    height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Truncate long text */
+}
+
+.date {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap; /* Prevent date from wrapping */
+    margin-left: auto; /* Push date to the right */
+    margin-right: 10px;
+}
+
+.lowerHeaderLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.isReplyLabel {
+    font-size: 0.8rem;
+    padding-top: 16px;
+    padding-left: 10px;
+}
+
+.postOptions {
+    padding: 0px; 
+    display: flex;
+    margin-left: auto;
+}
+
+i {
+    background-color: transparent;
+}
+
+.postOptions .submit-icon {
+    justify-content: center;
+    align-items: center; /* Center icon inside the button */
+    width: 40px; /* Circle with diameter 40px (20px radius) */
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    border-radius: 50%; /* Makes the button a circle */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); Add some shadow */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.rightColumn {
+    border-left-style: solid;
+}
+
+.rightColumn ul {
+    padding: 30px;
+    list-style: none;
+}
+
+.rightColumn li {
+    padding: 10px;
+    font-size: 1.7rem;
+}
+
+.profileFullPane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePicBorder img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin: 0px;
+    /* margin: 50px; */
+}
+
+.profileFullPane .userDesc {
+    overflow: unset;
+    white-space: unset;
+    text-overflow: unset;
+}
+
+.profilePicBorder {
+    width: 50px; /* Set the size of the outer container */
+    height: 50px; /* Keep it square to maintain the round shape */
+    border: 2px solid white; /* The border color */
+    border-radius: 50%; /* Makes the container circular */
+    padding: 2px; /* Space between the border and the image */
+    background-color: transparent; /* Instagram-like background color */
+    display: flex; /* Center the image */
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+}
+
+.profileFullPane .profilePicBorder {
+    margin: 50px;
+    margin-top: -80px;
+    width: 150px;
+    height: 150px;
+}
+
+.profileFullPane {
+    height: 100%;
+    padding-bottom: 20px;
+    box-shadow: inset 0px 250px 100px 0px rgba(0, 0, 0, 0.2);
+                /* 0 100px 100px rgba(0, 0, 0, 0.2); */
+}
+
+.profileFullPane * {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-bottom: 15px;
+}
+
+.profileFullPane .userName {
+    font-size: larger;
+}
+
+.follow-icon {
+    margin-top: 0px;
+    justify-content: center;
+    align-items: center; /* Center icon inside the button */
+    width: 60px; /* Circle with diameter 40px (20px radius) */
+    height: 60px;
+    border: none;
+    background-color: #888;
+    color: transparent;
+    border-radius: 50%; /* Makes the button a circle */
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); Add some shadow */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.follow-icon i {
+    margin-top: 15px;
+}
+
+
+/* * {
+    border-style: solid;
+    box-sizing: border-box;
+} */
