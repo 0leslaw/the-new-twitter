@@ -4,16 +4,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Microblogging app</title>
         <link rel="stylesheet"
-              href="{{ url_for('static', filename='microblog.css') }}">
+              href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Jacquard+24+Charted&display=swap" rel="stylesheet">  
     </head>
     <body>
         <header>
-            <h1>Microblogging</h1>
-            <a href="{{ url_for('main.index') }}">Home</a>
+            <span class="headerTitle">
+                Twitter 2.0
+            </span>
+            <ul>
+                <li><a href=""><i class="fas fa-cog"></i></a></li>
+                <li><a href="{{ url_for('main.index') }}"><i class="fas fa-globe-europe"></i></a></li>
+            </ul>
+
         </header>
-        <section class="content">
+
+        <!-- <section class="content"> -->
             {% block content %}{% endblock %}
-        </section>
+        <!-- </section> -->
         <footer><small>Developed for Web applications</small></footer>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </body>
 </html>

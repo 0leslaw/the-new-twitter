@@ -1,8 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <section>
-        <h2>Latest posts from the people you follow</h2>
-        {% include 'posts_template.html' %}
-    </section>
+<section class="leftColumn">
+    <div class="profileBrief">
+        <div class="profilePicBorder">
+            <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
+        </div>
+        <div>
+            <div class="userName">Current User</div>
+            <div class="userDesc">description (should be limited)
+                dslcslcpsel,c;el,   
+            </div>
+        </div>
+    </div>
+    <div class="postForm">
+        <label>Post your thought:</label>
+        <textarea id="thoughtContent" name="thoughtContent" placeholder="   .   .   ." required></textarea>
+        <div style="height: 20px; width: 76%; border-top-style: solid;"></div>
+        <button type="submit" class="submit-icon">
+            <i class="fas fa-paper-plane"></i>
+        </button>   
+    </div>
+</section>
+<section class="middleColumn">
+    {% include 'posts_template.html' %}
+</section>
+<section class="rightColumn">
+    <ul>
+        <li>Options</li>
+        <li>If</li>
+        <li>There is</li>
+        <li>Ever</li>
+        <li>A need</li>
+        <li>For</li>
+        <li>Options</li>
+
+    </ul>
+</section>
+
 {% endblock %}

@@ -1,7 +1,33 @@
-<div class="post">
+<!-- <div class="post">
     <div class="text">{{ post.text}}</div>
     <div class="metadata">
         <span class="author">{{ post.user.name }}</span>
         <span class="date">{{ post.timestamp }}</span>
+    </div>
+</div> -->
+<div class="post otherPost">
+    <div class="simple">
+        <div class="postHeader">
+            <div class="profileBrief">
+                <div class="profilePicBorder">
+                    <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
+                </div>
+                <div class="metadata">
+                    <div class="userName">{{ post.user.name }}</div>
+                    <div class="userDesc">{{ post.user.desc }}</div>
+                </div>
+            </div>
+            <div class="date">{{ post.timestamp }}</div>
+        </div>
+        <div class="theThought">
+            {{ post.content }}
+        </div>
+        <div class="lowerHeaderLine">
+            <div class="postOptions">
+                <button type="submit" class="submit-icon">
+                    <i class="fas fa-reply"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </div>

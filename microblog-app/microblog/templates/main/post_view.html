@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div></div>
+<div style>
+    {% include 'post_template.html' %}
+    <div style="padding: 20px"> Responses: </div>
+    {% include 'posts_template.html' %}
+</div>
+
+
+{% endblock %}

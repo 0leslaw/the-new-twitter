@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="leftColumn">
+    <div class="profileFullPane">
+        <div class="profilePicBorder">
+            <img src="assets/dummy_prof_pic.png" alt="img">
+        </div>
+        <div>
+            <div class="userName">{{ current_user.name }}</div>
+            <div class="userDesc">{{ current_user.desc }}</div>
+        </div>
+        <button type="submit" class="follow-icon"><i class="fas fa-heart"></i></a>
+    </div>
+</section>
+<section class="middleColumn">
+    {% include 'posts_template.html' %}
+</section>
+<section class="rightColumn">
+    <ul>
+        <li>Options</li>
+        <li>If</li>
+        <li>There is</li>
+        <li>Ever</li>
+        <li>A need</li>
+        <li>For</li>
+        <li>Options</li>
+
+    </ul>
+</section>
+
+{% endblock %}

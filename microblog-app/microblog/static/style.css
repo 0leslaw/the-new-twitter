@@ -171,10 +171,12 @@ button:hover {
     justify-content: space-between;
     height: fit-content;
 }
+.theOneRepliedTo {
+    background-color: #393939;
+}
 
 .theOneRepliedTo * {
-    background-color: #393939;
-
+    background-color: transparent;
 }
 
 .theOneRepliedTo .profileBrief {
@@ -215,12 +217,17 @@ button:hover {
     overflow: hidden;
 }
 
+.simple * {
+    background-color: transparent;
+}
+
 .postHeader {
     padding: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom-style: solid;
+    background-color: #2A2A2A;
 }
 
 .profileBrief img {
@@ -385,8 +392,11 @@ i {
     margin-top: 15px;
 }
 
+.posts {
+    width: 100%;
+}
 
-/* * {
+/* 
+* {
     border-style: solid;
-    box-sizing: border-box;
 } */
