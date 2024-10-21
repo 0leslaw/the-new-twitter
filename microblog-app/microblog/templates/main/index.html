@@ -13,14 +13,14 @@
             </div>
         </div>
     </div>
-    <div class="postForm">
+    <form class="postForm" method="POST" action="{{ url_for('main.new_post') }}">
         <label>Post your thought:</label>
         <textarea id="thoughtContent" name="thoughtContent" placeholder="   .   .   ." required></textarea>
         <div style="height: 20px; width: 76%; border-top-style: solid;"></div>
         <button type="submit" class="submit-icon">
             <i class="fas fa-paper-plane"></i>
         </button>   
-    </div>
+    </form>
 </section>
 <section class="middleColumn">
     {% include 'posts_template.html' %}

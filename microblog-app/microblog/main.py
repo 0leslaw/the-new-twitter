@@ -1,56 +1,58 @@
 import datetime
+from os import abort
 import random
 import dateutil.tz
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+import flask_login
 
 
 from . import model
+from . import db
 
 bp = Blueprint("main", __name__)
 
 
 @bp.route("/")
+@flask_login.login_required
 def index():
-    current_user = model.User(1, "current@example.com", "Current Use")
-    user = model.User(2, "mary@example.com", "mary")
+    # current_user = model.User(email="mary@example.com", name="mary")
+    user = model.User(email="mary@example.com", name="mary")
     posts = [
-        model.Post(
-            1, user, "Test post", datetime.datetime.now(dateutil.tz.tzlocal()).strftime('%Y-%m-%d %H:%M')
-        ),
-        model.Post(
-            2, user, "Another post", datetime.datetime.now(dateutil.tz.tzlocal()).strftime('%Y-%m-%d %H:%M')
-        ),
-        model.Post(
-            3, user, "Yet another post", datetime.datetime.now(dateutil.tz.tzlocal()).strftime('%Y-%m-%d %H:%M')
-        ),
+        model.Post(user=user, text="Test post", timestamp=datetime.datetime.now(dateutil.tz.tzlocal())),
+        model.Post(user=user, text="Another post", timestamp=datetime.datetime.now(dateutil.tz.tzlocal())),
     ]
-    return render_template("main/index.html", posts=posts, current_user=current_user)
+    return render_template("main/index.html", posts=posts, current_user=flask_login.current_user)
 
 @bp.route("/profile_view")
+@flask_login.login_required
 def profile_view():
-    current_user = model.User(1, "mary@example.com", "mary", """description (should be limited)
-                dslcslcpsel,c;el, iufe weoj wef weoifjwe ijofwej
-                we fowojfweoj sfoiwefoijwe oifweoi wefoijwe ijofwejwe j
-                w ifew jowhufhuwehou fweihu fwehuoifwehf
-                w ef weouf owefouhwefou wefoh weohu fweo joiwejoi """)
     posts = [
-        model.Post(
-            1, current_user, "Test post", datetime.datetime.now(dateutil.tz.tzlocal()).strftime('%Y-%m-%d %H:%M')
-        ),
-        model.Post(
-            2, current_user, "Another post", datetime.datetime.now(dateutil.tz.tzlocal()).strftime('%Y-%m-%d %H:%M')
-        ),
-        model.Post(
-            3, current_user, "Yet another post", datetime.datetime.now(dateutil.tz.tzlocal()).strftime('%Y-%m-%d %H:%M')
-        ),
+        model.Post(user=flask_login.current_user, text="Test post", timestamp=datetime.datetime.now(dateutil.tz.tzlocal())),
+        model.Post(user=flask_login.current_user, text="Another post", timestamp=datetime.datetime.now(dateutil.tz.tzlocal())),
     ]
-    return render_template("main/profile_view.html", posts=posts, current_user=current_user)
+    return render_template("main/profile_view.html", posts=posts, current_user=flask_login.current_user)
 
-@bp.route("/post_view")
-def post_view():
-    data = makeDummyDataTask5Lab3_1()
-    return render_template("main/post_view.html", post=data['main_post'], posts=data['responses'])
+@bp.route("/post_view/<int:post_id>")
+@flask_login.login_required
+def post_view(post_id):
+    post = db.session.get(model.Post, post_id)
+    if not post:
+        abort(404, "Post id {} doesn't exist.".format(post_id))
+    return render_template("main/post_view.html", post=post, posts=post.responses)
+
+@bp.route("/new_post", methods=["POST"])
+@flask_login.login_required
+def new_post():
+    text = request.form.get("thoughtContent")
+    if text:
+        post = model.Post(user=flask_login.current_user, text=text, timestamp=datetime.datetime.now(dateutil.tz.tzlocal()))
+        db.session.add(post)
+        db.session.commit()
+        flash("Your post has been published")
+        return redirect(url_for("main.post_view", post_id=post.id))
+    flash("You need to write something to post")
+    return redirect(url_for("main.index"))
 
 def makeDummyDataTask5Lab3_1():
     posts = []
