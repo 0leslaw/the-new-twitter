@@ -4,13 +4,15 @@
 <section class="leftColumn">
     <div class="profileFullPane">
         <div class="profilePicBorder">
-            <img src="assets/dummy_prof_pic.png" alt="img">
+            <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
         </div>
         <div>
-            <div class="userName">{{ current_user.name }}</div>
-            <div class="userDesc">{{ current_user.desc }}</div>
+            <div class="userName">{{ user.name }}</div>
+            <div class="userDesc">{{ user.desc }}</div>
         </div>
+        {% if not is_current %}
         <button type="submit" class="follow-icon"><i class="fas fa-heart"></i></a>
+        {% endif %}
     </div>
 </section>
 <section class="middleColumn">

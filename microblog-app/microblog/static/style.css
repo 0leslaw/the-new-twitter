@@ -8,6 +8,7 @@
     font-size: 25px;
     font-family: 'Jacquard 24', sans-serif;
     /* display: flex; */
+    text-decoration: none;
 }
 
 *:active {
@@ -113,6 +114,16 @@ header ul li {
     /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); Add some shadow */
     cursor: pointer;
     font-size: 16px;
+}
+
+.answearForm {
+    display: flex;
+    flex-direction: row; /* Align elements vertically */
+    justify-content: center;
+    align-items: center; /* Center elements horizontally */
+    width: 100%; /* Full width for the form */
+    /* height: 50vh; */
+    /* padding: 20px; */
 }
 
 button:hover {

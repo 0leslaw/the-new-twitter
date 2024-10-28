@@ -2,17 +2,19 @@
 
 {% block content %}
 <section class="leftColumn">
-    <div class="profileBrief">
-        <div class="profilePicBorder">
-            <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
-        </div>
-        <div>
-            <div class="userName">Current User</div>
-            <div class="userDesc">description (should be limited)
-                dslcslcpsel,c;el,   
+    <a href="{{url_for('main.profile_view', user_id=current_user.id)}}">
+        <div class="profileBrief">
+            <div class="profilePicBorder">
+                <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
+            </div>
+            <div>
+                <div class="userName">{{current_user.name}}</div>
+                <div class="userDesc">description (should be limited)
+                    dslcslcpsel,c;el,
+                </div>
             </div>
         </div>
-    </div>
+    </a>
     <form class="postForm" method="POST" action="{{ url_for('main.new_post') }}">
         <label>Post your thought:</label>
         <textarea id="thoughtContent" name="thoughtContent" placeholder="   .   .   ." required></textarea>

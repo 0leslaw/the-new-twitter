@@ -5,29 +5,37 @@
         <span class="date">{{ post.timestamp }}</span>
     </div>
 </div> -->
-<div class="post otherPost">
-    <div class="simple">
-        <div class="postHeader">
-            <div class="profileBrief">
-                <div class="profilePicBorder">
-                    <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
+
+    <div class="post otherPost">
+        <div class="simple">
+            <div class="postHeader">
+                <div class="profileBrief">
+                    <div class="profilePicBorder">
+                        <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
+                    </div>
+                    <div class="metadata">
+                        <div class="userName">
+                            <a href="{{url_for('main.profile_view', user_id=post.user_id)}}">{{ post.user.name }}</a>
+                        </div>
+                        <div class="userDesc">{{ post.user.desc }}</div>
+                    </div>
                 </div>
-                <div class="metadata">
-                    <div class="userName">{{ post.user.name }}</div>
-                    <div class="userDesc">{{ post.user.desc }}</div>
-                </div>
+                <div class="date">{{ post.timestamp }}</div>
             </div>
-            <div class="date">{{ post.timestamp }}</div>
-        </div>
-        <div class="theThought">
-            {{ post.text }}
-        </div>
-        <div class="lowerHeaderLine">
-            <div class="postOptions">
-                <button type="submit" class="submit-icon">
-                    <i class="fas fa-reply"></i>
-                </button>
+
+            <a href="{{url_for("main.post_view", post_id=post.id)}}" style="overflow: visible;">
+            <div class="theThought">
+                {{ post.text }}
+            </div>
+            </a>
+            
+            <div class="lowerHeaderLine">
+                <div class="postOptions">
+                    <button type="submit" class="submit-icon">
+                        <i class="fas fa-reply"></i>
+                    </button>
+                </div>
+                
             </div>
         </div>
     </div>
-</div>

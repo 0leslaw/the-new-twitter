@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Sign Up!!!</h2>
+    <h2><a href="{{url_for('auth.signup')}}">Sign Up!!!</a></h2>
     <form action="{{ url_for('auth.login') }}" method="post">
         <div><label>Email: <input type="email" name="email" required/></label></div>
         <div><label>Password: <input type="password" name="password" required/></label></div>
