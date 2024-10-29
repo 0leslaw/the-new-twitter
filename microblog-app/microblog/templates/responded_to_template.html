@@ -1,0 +1,18 @@
+<div class="theOneRepliedTo original" data-post-id="{{ post.id }}">
+
+    <div class="profileBrief">
+
+        <div class="profilePicBorder">
+            <img src="{{ url_for('static', filename='assets/dummy_prof_pic.png') }}" alt="img">
+        </div>
+        <div>
+            <div class="userName">{{post.response_to.user.name}}</div>
+        </div>
+    </div>
+
+    <div class="theThought">
+        <a href="{{url_for("main.post_view", post_id=post.response_to.id)}}" >
+        {{post.response_to.text}}
+        </a>
+    </div>
+</div>

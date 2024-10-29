@@ -5,8 +5,11 @@
         <span class="date">{{ post.timestamp }}</span>
     </div>
 </div> -->
-
-    <div class="post otherPost">
+{% if post.response_to is none %}
+    <div class="post otherPost original" data-post-id="{{ post.id }}">
+{% else %}
+    <div class="post otherPost response">
+{% endif %}
         <div class="simple">
             <div class="postHeader">
                 <div class="profileBrief">
@@ -28,14 +31,12 @@
                 {{ post.text }}
             </div>
             </a>
-            
             <div class="lowerHeaderLine">
                 <div class="postOptions">
-                    <button type="submit" class="submit-icon">
-                        <i class="fas fa-reply"></i>
-                    </button>
+                    
                 </div>
                 
             </div>
         </div>
     </div>
+    

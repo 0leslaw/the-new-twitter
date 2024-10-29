@@ -42,14 +42,19 @@ def post_view(post_id):
         abort(404, "Post id {} doesn't exist.".format(post_id))
     return render_template("main/post_view.html", post=post, posts=post.responses)
 
-@bp.route("/new_post/<int:response_to_id>", methods=["POST"]) 
 @bp.route("/new_post", methods=["POST"])
 @flask_login.login_required
 def new_post(response_to_id=None):
+    print(request.form)
     text = request.form.get("thoughtContent")
     if text:
+        response_to_id = request.form.get("response_to_id")
+        if response_to_id:
+            response_to_id = int(response_to_id)
+            response_to = db.get_or_404(model.Post, response_to_id)
+        
         post = model.Post(
-            response_to=db.session.get(model.Post, response_to_id) if response_to_id else None,
+            response_to=response_to if response_to_id else None,
             response_to_id=response_to_id, 
             user=flask_login.current_user, 
             text=text, 
@@ -58,6 +63,8 @@ def new_post(response_to_id=None):
         db.session.add(post)
         db.session.commit()
         flash("Your post has been published")
-        return redirect(url_for("main.post_view", post_id=post.id))
-    flash("You need to write something to post")
-    return redirect(url_for("main.index"))
+        return redirect(url_for("main.post_view", post_id=response_to_id)) if \
+            response_to_id else redirect(url_for("main.post_view", post_id=post.id))
+    else:
+        flash("You need to write something to post")
+        return redirect(url_for("main.index"))

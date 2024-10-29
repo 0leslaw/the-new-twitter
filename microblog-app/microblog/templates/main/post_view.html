@@ -5,15 +5,15 @@
 <div style>
     {% include 'post_template.html' %}
     <div style="padding: 20px"> Respond: </div>
-    <form class="postForm answearForm" style="gap: 10px" method="POST" action="{{ url_for('main.new_post', response_to_id=post.id) }}">
-        
+    <form class="postForm answearForm" style="gap: 10px" method="POST" action="{{ url_for('main.new_post') }}">
+        <input type="hidden" name="response_to_id" value="{{ post.id }}">
         <textarea id="thoughtContent" name="thoughtContent" placeholder="   .   .   ." required style="height: 50px; width: 300px"></textarea>
         <button type="submit" class="submit-icon" style="width: 50px; height: 50px">
             <i class="fas fa-paper-plane" style="width: 30px; height: 30px"></i>
         </button>   
     </form>
     <div style="padding: 20px"> Responses: </div>
-    {% include 'posts_template.html' %}
+    {% include 'posts_without_responses_template.html' %}
 </div>
 
 

@@ -1,5 +1,8 @@
 <div class="posts">
     {% for post in posts %}
         {% include 'post_template.html' %}
+        {% if post.response_to != None %}
+            {% include 'responded_to_template.html' %}
+        {% endif %}
     {% endfor %}
 </div>

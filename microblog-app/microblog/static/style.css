@@ -55,7 +55,6 @@ header ul li {
 
 .leftColumn  {
     border-right-style: solid;
-    height: 100vh;
 }
 
 .profileBrief {
@@ -258,7 +257,7 @@ button:hover {
     padding-top: 5px;
     font-size: 0.9rem;
     color: #777;
-    max-width: 300px;
+    max-width: 250px;
     height: 25px;
     overflow: hidden;
     white-space: nowrap;
@@ -334,16 +333,18 @@ i {
     height: 100%;
     border-radius: 50%;
     margin: 0px;
+    object-fit: cover;
     /* margin: 50px; */
 }
 
-.profileFullPane .userDesc {
+/* .profileFullPane .userDesc {
     overflow: unset;
     white-space: unset;
     text-overflow: unset;
-}
+} */
 
 .profilePicBorder {
+    min-width: 50px;
     width: 50px; /* Set the size of the outer container */
     height: 50px; /* Keep it square to maintain the round shape */
     border: 2px solid white; /* The border color */
